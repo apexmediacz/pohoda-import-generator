@@ -17,7 +17,7 @@ class PohodaExportGenerator
 			}
 		}
 
-		$pohoda->exportAsString(time(), 'popis', date("Y-m-d_H-i-s"));
+		return $pohoda->exportAsString(time(), 'popis', date("Y-m-d_H-i-s"));
 	}
 
 	public function createInvoice($invoiceData)

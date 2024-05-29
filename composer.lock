@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "88ca7209bbf6880cbc165628b3a7f4e2",
+    "content-hash": "4c4fa5ce866d70cecb1ba884c1dba3c8",
     "packages": [
         {
             "name": "apexmediacz/php-pohoda-export",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apexmediacz/php-pohoda-export.git",
-                "reference": "9abd2398acd6ad4a9aff7f29c702fce806c7c70b"
+                "reference": "c01c78d379ca748a80aa0f02caa1d8e179a02f66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apexmediacz/php-pohoda-export/zipball/9abd2398acd6ad4a9aff7f29c702fce806c7c70b",
-                "reference": "9abd2398acd6ad4a9aff7f29c702fce806c7c70b",
+                "url": "https://api.github.com/repos/apexmediacz/php-pohoda-export/zipball/c01c78d379ca748a80aa0f02caa1d8e179a02f66",
+                "reference": "c01c78d379ca748a80aa0f02caa1d8e179a02f66",
                 "shasum": ""
             },
             "require": {
@@ -32,9 +32,9 @@
             "notification-url": "https://packagist.org/downloads/",
             "description": "Export do POHODA ucetnictvi",
             "support": {
-                "source": "https://github.com/apexmediacz/php-pohoda-export/tree/v1.0.1"
+                "source": "https://github.com/apexmediacz/php-pohoda-export/tree/v1.0.2"
             },
-            "time": "2024-05-29T18:05:05+00:00"
+            "time": "2024-05-29T18:28:58+00:00"
         }
     ],
     "packages-dev": [],

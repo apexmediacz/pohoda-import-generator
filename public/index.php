@@ -68,3 +68,4 @@ $data = (object)[
 
 $pohoda = new PohodaExportGenerator;
 $xmlString = $pohoda->generateXml($data);
+echo $xmlString;
