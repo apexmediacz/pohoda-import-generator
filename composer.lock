@@ -1,0 +1,52 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "7a76660ab476489f02b9ef452d9ed084",
+    "packages": [
+        {
+            "name": "unio/pohoda-export",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Ivorius/pohoda-export.git",
+                "reference": "af926b36f44ce98420491e266f397fc5214d51ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Ivorius/pohoda-export/zipball/af926b36f44ce98420491e266f397fc5214d51ce",
+                "reference": "af926b36f44ce98420491e266f397fc5214d51ce",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Pohoda\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Export do POHODA ucetnictvi",
+            "support": {
+                "source": "https://github.com/Ivorius/pohoda-export/tree/master"
+            },
+            "time": "2020-02-13T09:07:58+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "unio/pohoda-export": 20
+    },
+    "prefer-stable": true,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.6.0"
+}

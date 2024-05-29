@@ -1,0 +1,14 @@
+{
+	"name": "apexmediacz/pohoda-import-generator",
+	"description": "Generator of XML exports for POHODA accounting sw",
+	"autoload": {
+		"psr-4": {
+			"Apexmediacz\\": "src/"
+		}
+	},
+	"require": {
+		"unio/pohoda-export": "dev-master"
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}
