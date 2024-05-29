@@ -1,5 +1,5 @@
 {
-	"name": "apexmediacz/pohoda-import-generator",
+	"name": "apexmediacz/pohoda-export-generator",
 	"description": "Generator of XML exports for POHODA accounting sw",
 	"autoload": {
 		"psr-4": {
@@ -7,7 +7,8 @@
 		}
 	},
 	"require": {
-		"unio/pohoda-export": "dev-master"
+		"apexmediacz/php-pohoda-export": "1.0.1",
+		"php": ">=7.0"
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true

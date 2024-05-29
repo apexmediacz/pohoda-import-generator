@@ -1,8 +1,15 @@
-<?php
+php-pohoda-export
+=============
+
+Export invoices to XML format used in accounting software POHODA using simple object
+
+## Quick Start
+
+```php
 
 require_once("../vendor/autoload.php");
 
-use Apexmediacz\PohodaExportGenerator;
+use Apexmediacz\PohodaImportGenerator;
 
 $invoice_item = (object)[
 	"name" => "Položka",
@@ -66,5 +73,8 @@ $data = (object)[
 	]
 ];
 
-$pohoda = new PohodaExportGenerator;
+$pohoda = new PohodaImportGenerator;
 $xmlString = $pohoda->generateXml($data);
+
+
+```

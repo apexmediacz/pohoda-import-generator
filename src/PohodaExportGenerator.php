@@ -2,7 +2,7 @@
 
 namespace Apexmediacz;
 
-class PohodaImportGenerator
+class PohodaExportGenerator
 {
 	private $vat_high_rate = 21;
 	public function generateXml($data)
@@ -13,13 +13,11 @@ class PohodaImportGenerator
 			if ($createdInvoice) {
 				if ($createdInvoice->isValid()) {
 					$pohoda->addInvoice($createdInvoice);
-				} else {
-					//var_dump($createdInvoice->getErrors());
 				}
 			}
 		}
 
-		$pohoda->exportAsXml(time(), 'popis', date("Y-m-d_H-i-s"));
+		$pohoda->exportAsString(time(), 'popis', date("Y-m-d_H-i-s"));
 	}
 
 	public function createInvoice($invoiceData)
