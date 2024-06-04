@@ -5,19 +5,40 @@ namespace Apexmediacz;
 class PohodaExportGenerator
 {
 	private $vat_high_rate = 21;
-	public function generateXml($data)
+	public function generateXml($data, $toScreen = false)
 	{
-		$pohoda = new \Pohoda\Export($data->accounting_unit_identification_number);
-		foreach ($data->invoices as $invoice) {
-			$createdInvoice = $this->createInvoice($invoice);
-			if ($createdInvoice) {
-				if ($createdInvoice->isValid()) {
-					$pohoda->addInvoice($createdInvoice);
-				}
-			}
-		}
+		// $pohoda = new \Pohoda\Export($data->accounting_unit_identification_number);
+		// foreach ($data->invoices as $invoice) {
+		// 	$createdInvoice = $this->createInvoice($invoice);
+		// 	if ($createdInvoice) {
+		// 		if ($createdInvoice->isValid()) {
+		// 			$pohoda->addInvoice($createdInvoice);
+		// 		}
+		// 	}
+		// }
 
-		return $pohoda->exportAsString(time(), 'popis', date("Y-m-d_H-i-s"));
+		// if ($toScreen) {
+		// 	return $pohoda->exportAsXml(time(), 'popis', date("Y-m-d_H-i-s"));
+		// }
+		// return $pohoda->exportAsString(time(), 'popis', date("Y-m-d_H-i-s"));
+
+		$pohoda = new \Apexmediacz\Document($data->accounting_unit_identification_number);
+		$invoices = new \Apexmediacz\Invoice;
+		$invoicesData = [];
+		$counter = 1;
+		foreach ($data->invoices as $invoice) {
+			$invoicesData[] = $invoices->createInvoice($invoice, $counter);
+			$counter++;
+		}
+		$dataPackXml = $pohoda->generateDataPack($invoicesData);
+
+		if ($toScreen) {
+			//headers
+			header('Content-type: text/xml; charset=windows-1250');
+			header('Content-Disposition: attachment; filename="' . $data->accounting_unit_identification_number . '-' . date('d-m-Y-H-i-s') . '.xml"');
+			return $dataPackXml;
+		}
+		return $dataPackXml;
 	}
 
 	public function createInvoice($invoiceData)
@@ -26,7 +47,7 @@ class PohodaExportGenerator
 			$invoice = new \Pohoda\Invoice($invoiceData->invoice_id);
 			$invoice->setText($invoiceData->description);
 			$invoiceTotals = $this->calculateTotalInvoiceAmounts($invoiceData);
-			$invoice->setAccounting($invoiceData->payment->bank_name);
+			$invoice->setBank($invoiceData->payment->bank_name);
 
 			$invoice->setPriceLow($invoiceTotals->low->totalWithoutVat);
 			$invoice->setPriceLowVAT($invoiceTotals->low->totalVat);

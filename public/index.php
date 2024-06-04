@@ -5,7 +5,7 @@ require_once("../vendor/autoload.php");
 use Apexmediacz\PohodaExportGenerator;
 
 $invoice_item = (object)[
-	"name" => "Položka",
+	"name" => "Vložka do boty",
 	"quantity" => 1,
 	"unit_label" => "ks",
 	"vat_rate_percent" => 21,
@@ -16,32 +16,32 @@ $invoice_item = (object)[
 ];
 
 $invoice = (object)[
-	"invoice_id" => "FV20240101",
-	"issue_date" => "2024-04-13",
-	"tax_point_date" => "2024-04-13",
+	"invoice_id" => "TFV20240101",
+	"issue_date" => "2024-05-30",
+	"tax_point_date" => "2024-05-30",
 	"is_vat_applicable" => true,
-	"description" => "Faktura za služby",
+	"description" => "Faktura za služby provedené",
 	"customer" => (object)[
-		"name" => "Customer company name",
-		"identification_number" => "01234566",
-		"tax_number" => "CZ01234566",
+		"name" => "Protetika Plzeň, s.r.o.",
+		"identification_number" => "48363405",
+		"tax_number" => "CZ48363405",
 		"address" => (object)[
-			"street" => "Ulice",
-			"house_number" => "7",
-			"city" => "Praha",
-			"zip_code" => "110 00",
+			"street" => "Bolevecká",
+			"house_number" => "38",
+			"city" => "Plzeň",
+			"zip_code" => "301 00",
 			"country_code" => "CZ"
 		],
 	],
 	"supplier" => (object)[
-		"name" => "Dodavatel s.r.o.",
-		"identification_number" => "098767656",
-		"tax_number" => "CZ098767656",
+		"name" => "APEX MEDIA, s.r.o.",
+		"identification_number" => "07968116",
+		"tax_number" => "CZ07968116",
 		"address" => (object)[
-			"street" => "Ulice",
-			"house_number" => "38",
-			"city" => "Praha",
-			"zip_code" => "150 00",
+			"street" => "Vltavínová",
+			"house_number" => "7",
+			"city" => "Plzeň",
+			"zip_code" => "326 00",
 			"country_code" => "CZ"
 		],
 	],
@@ -52,7 +52,7 @@ $invoice = (object)[
 		"variable_symbol" => "8278728",
 		"constant_symbol" => null,
 		"specific_symbol" => null,
-		"payment_due_date" => "2024-04-20",
+		"payment_due_date" => "2024-06-20",
 	],
 	"items" => [
 		$invoice_item
@@ -67,5 +67,5 @@ $data = (object)[
 ];
 
 $pohoda = new PohodaExportGenerator;
-$xmlString = $pohoda->generateXml($data);
+$xmlString = $pohoda->generateXml($data, true);
 echo $xmlString;
