@@ -7,7 +7,6 @@
 		}
 	},
 	"require": {
-		"apexmediacz/php-pohoda-export": "1.0.2",
 		"php": ">=7.0"
 	},
 	"minimum-stability": "dev",
