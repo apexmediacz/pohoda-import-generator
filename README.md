@@ -44,18 +44,6 @@ $invoice = (object)[
 			"country_code" => "CZ"
 		],
 	],
-	"supplier" => (object)[
-		"name" => "APEX MEDIA, s.r.o.",
-		"identification_number" => "07968116",
-		"tax_number" => "CZ07968116",
-		"address" => (object)[
-			"street" => "Vltavínová",
-			"house_number" => "7",
-			"city" => "Plzeň",
-			"zip_code" => "326 00",
-			"country_code" => "CZ"
-		],
-	],
 	"payment" => (object)[
 		"payment_type" => "hotově", //hotově | převodem
 		"bank_name" => "ČSOB",
