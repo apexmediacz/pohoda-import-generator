@@ -22,9 +22,9 @@ class Invoice
 		return '<dat:dataPackItem version="2.0" id="' . str_pad($counter, 3, "0", STR_PAD_LEFT) . '">
 		<inv:invoice version="2.0">
 			<inv:invoiceHeader>
-				<inv:invoiceType>issuedInvoice</inv:invoiceType>
+				<inv:invoiceType>' . ($invoiceData->invoice_type ?? "issuedInvoice") . '</inv:invoiceType>
 				<inv:number>
-					' . ($invoiceData->request_number === true ? '<typ:numberRequested>' . $invoiceData->accounting_series_no . '' . $invoiceData->invoice_id . '</typ:numberRequested>' : '') . '
+					' . ($invoiceData->request_number === true ? '<typ:numberRequested>' . $invoiceData->accounting_series_no . '' . $invoiceData->invoice_id . '</typ:numberRequested>' : '<typ:ids>' . $invoiceData->accounting_series_no . '</typ:ids>') . '
 				</inv:number>
 				<inv:symVar>' . $invoiceData->payment->variable_symbol . '</inv:symVar>
 				<inv:date>' . $invoiceData->issue_date . '</inv:date>
