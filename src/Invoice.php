@@ -24,16 +24,13 @@ class Invoice
 			<inv:invoiceHeader>
 				<inv:invoiceType>issuedInvoice</inv:invoiceType>
 				<inv:number>
-					<typ:ids>' . date('y', strtotime($invoiceData->tax_point_date)) . '19</typ:ids>
+					' . ($invoiceData->request_number === true ? '<typ:numberRequested>' . $invoiceData->accounting_series_no . '' . $invoiceData->invoice_id . '</typ:numberRequested>' : '') . '
 				</inv:number>
 				<inv:symVar>' . $invoiceData->payment->variable_symbol . '</inv:symVar>
 				<inv:date>' . $invoiceData->issue_date . '</inv:date>
 				<inv:dateTax>' . $invoiceData->tax_point_date . '</inv:dateTax>
 				<inv:dateAccounting>' . $invoiceData->tax_point_date . '</inv:dateAccounting>
 				<inv:dateDue>' . $invoiceData->payment->payment_due_date . '</inv:dateDue>
-				<inv:accounting>
-					<typ:ids>BEZ331020</typ:ids>
-				</inv:accounting>
 				<inv:classificationVAT>
 					<typ:classificationVATType>inland</typ:classificationVATType>
 				</inv:classificationVAT>
@@ -42,7 +39,7 @@ class Invoice
 					' . $this->createParty($invoiceData->customer) . '
 				</inv:partnerIdentity>
 				<inv:paymentType>
-					<typ:paymentType>draft</typ:paymentType>
+					<typ:paymentType>' . ($invoiceData->payment->payment_type ?? "") . '</typ:paymentType>
 				</inv:paymentType>
 				<inv:symConst>0138</inv:symConst>
 				<inv:paymentAccount>
@@ -50,6 +47,7 @@ class Invoice
 					<typ:bankCode>' . $invoiceData->payment->bank_code . '</typ:bankCode>
 				</inv:paymentAccount>
 			</inv:invoiceHeader>
+			<inv:invoiceDetail>' . implode("", $invoiceItems) . '</inv:invoiceDetail>
 			<inv:invoiceSummary>
 				<inv:roundingDocument>math2one</inv:roundingDocument>
 				<inv:roundingVAT>none</inv:roundingVAT>
@@ -70,9 +68,6 @@ class Invoice
 						</typ:round>
 					</inv:homeCurrency>') . '
 			</inv:invoiceSummary>
-			<inv:invoiceDetail>
-				' . implode("", $invoiceItems) . '
-			</inv:invoiceDetail>
 		</inv:invoice>
 	</dat:dataPackItem>';
 	}
@@ -96,10 +91,9 @@ class Invoice
 	{
 		$invoiceRate = (new \Apexmediacz\PohodaExportGenerator)->getInvoiceItemVatRate($item);
 		return '<inv:invoiceItem>
-		<inv:text>' . $item->name . '</inv:text>
+		<inv:text>' . $this->encodeStringIfNeeded($item->name) . '</inv:text>
 		<inv:quantity>' . $item->quantity . '</inv:quantity>
 		<inv:unit>' . $item->unit_label . '</inv:unit>
-		<inv:coefficient>1.0</inv:coefficient>
 		<inv:payVAT>false</inv:payVAT>
 		<inv:rateVAT>' . $invoiceRate . '</inv:rateVAT>
 		<inv:homeCurrency>
@@ -107,19 +101,15 @@ class Invoice
 		</inv:homeCurrency>
 		<inv:note />
 		<inv:code />
-		<inv:guarantee>48</inv:guarantee>
-		<inv:guaranteeType>month</inv:guaranteeType>
 	</inv:invoiceItem>';
 	}
 
 	public function encodeStringIfNeeded($string)
 	{
-		return $string;
 		$stringEnc = mb_detect_encoding($string);
 		if ($stringEnc != "Windows-1250") {
 			return iconv($stringEnc, "Windows-1250", $string);
 		}
-
 		return $string;
 	}
 }

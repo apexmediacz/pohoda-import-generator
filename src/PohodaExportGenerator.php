@@ -12,8 +12,8 @@ class PohodaExportGenerator
 		// 	$createdInvoice = $this->createInvoice($invoice);
 		// 	if ($createdInvoice) {
 		// 		if ($createdInvoice->isValid()) {
-		// 			$pohoda->addInvoice($createdInvoice);
 		// 		}
+		// 		$pohoda->addInvoice($createdInvoice);
 		// 	}
 		// }
 
