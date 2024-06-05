@@ -45,8 +45,7 @@ $invoice = (object)[
 		],
 	],
 	"payment" => (object)[
-		"payment_type" => "hotově", //hotově | převodem
-		"bank_name" => "ČSOB",
+		"payment_type" => "cash", //cash = hotovost | transfer = převod | creditCard = karta
 		"bank_account_number" => "12345678",
 		"bank_code" => "0300",
 		"variable_symbol" => "41240985",
